@@ -49,7 +49,7 @@ const EventList: React.FC<{ events: EventItem[] }> = ({ events }) => {
           display: "flex",
           flexDirection: "column",
         }}
-        pagination={{ pageSize: 4, position: "bottom" }}
+        pagination={{ pageSize: 3, position: "bottom" }}
         renderItem={(item) => (
           <List.Item
             key={item.id}

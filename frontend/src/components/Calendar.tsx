@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar as AntdCalendar } from "antd";
+import { Calendar as AntdCalendar, Button } from "antd";
 import dayjs from "dayjs";
 
 interface EventItem {
@@ -21,6 +21,8 @@ const Calendar: React.FC<CalendarProps> = ({
   onDateSelect,
   selectedDate,
 }) => {
+  const [currentDate, setCurrentDate] = React.useState(dayjs());
+
   const fullCellRender = (current: any, info: any) => {
     if (info.type !== "date") return info.originNode;
 
@@ -70,19 +72,50 @@ const Calendar: React.FC<CalendarProps> = ({
     return !events.some((e) => e.date === dateStr);
   };
 
+  const headerRender = ({ value, onChange }: any) => {
+    const goPrev = () => {
+      const next = value.subtract(1, "month");
+      onChange?.(next);
+      setCurrentDate(next);
+    };
+    const goNext = () => {
+      const next = value.add(1, "month");
+      onChange?.(next);
+      setCurrentDate(next);
+    };
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "0 16px",
+        }}
+      >
+        <Button onClick={goPrev}>←</Button>
+        <span style={{ fontWeight: "bold" }}>{value.format("YYYY MMMM")}</span>
+        <Button onClick={goNext}>→</Button>
+      </div>
+    );
+  };
+
   return (
     <AntdCalendar
       fullscreen={false}
       style={{ width: 350 }}
       fullCellRender={fullCellRender}
       disabledDate={disabledDate}
-      value={selectedDate ? dayjs(selectedDate) : undefined}
-      onSelect={(date) => {
+      headerRender={headerRender}
+      value={currentDate}
+      onSelect={(date: any, info: any) => {
+        // Only handle explicit date clicks, ignore selects from panel navigation
+        if (info?.source !== "date") return;
         const dateStr = date.format("YYYY-MM-DD");
-        if (onDateSelect) {
-          onDateSelect(selectedDate === dateStr ? null : dateStr);
+        if (events.some((e) => e.date === dateStr)) {
+          onDateSelect?.(selectedDate === dateStr ? null : dateStr);
         }
       }}
+      onPanelChange={(date) => setCurrentDate(date)}
     />
   );
 };

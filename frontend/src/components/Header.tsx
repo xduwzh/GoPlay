@@ -57,7 +57,20 @@ const Header: React.FC = () => {
         {!isLoggedIn && <Link to="/register">Register</Link>}
         {isLoggedIn && <Link to="/profile">Profile</Link>}
         {isLoggedIn && (
-          <Button type="link" onClick={handleLogout} style={{ padding: 0 }}>
+          <Button
+            type="link"
+            onClick={handleLogout}
+            style={{
+              padding: 0,
+              color: "#1677ff", // Match other links
+              textDecoration: "none",
+              fontSize: "inherit",
+              fontWeight: "inherit",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
             Logout
           </Button>
         )}
