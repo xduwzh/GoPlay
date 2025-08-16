@@ -28,9 +28,9 @@ const Register: React.FC = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
         backgroundColor: "#f0f2f5",
         flexDirection: "column",
+        minHeight: "calc(100vh - 64px - 70px)",
       }}
     >
       <Card title="Register" style={{ width: 300, textAlign: "center" }}>

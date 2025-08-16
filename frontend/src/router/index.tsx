@@ -14,7 +14,7 @@ const AppRouter: React.FC = () => {
     <Router>
       <Layout style={{ minHeight: "100vh" }}>
         <Header />
-        <Content style={{ padding: "20px" }}>
+        <Content style={{ padding: "20px", marginTop: 64 }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

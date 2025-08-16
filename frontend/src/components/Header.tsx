@@ -1,10 +1,20 @@
 import React from "react";
-import { Menu, Dropdown, Button } from "antd";
+import { Dropdown, Button } from "antd";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../store";
+import { useNavigate } from "react-router-dom";
 
 // Header component
 const Header: React.FC = () => {
-  const isLoggedIn = false; // Replace with actual authentication logic
+  const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
 
   const languageMenu = {
     items: [
@@ -22,6 +32,13 @@ const Header: React.FC = () => {
         padding: "10px 20px",
         borderBottom: "1px solid #ccc",
         backgroundColor: "#fff",
+        height: 64,
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        width: "100%",
       }}
     >
       {/* Website Title */}
@@ -38,8 +55,12 @@ const Header: React.FC = () => {
         <Link to="/">Home</Link>
         {!isLoggedIn && <Link to="/login">Login</Link>}
         {!isLoggedIn && <Link to="/register">Register</Link>}
-        {isLoggedIn && <Link to="/profile">Account</Link>}
-        {isLoggedIn && <Link to="/logout">Logout</Link>}
+        {isLoggedIn && <Link to="/profile">Profile</Link>}
+        {isLoggedIn && (
+          <Button type="link" onClick={handleLogout} style={{ padding: 0 }}>
+            Logout
+          </Button>
+        )}
       </nav>
     </header>
   );
