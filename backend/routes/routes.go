@@ -13,5 +13,12 @@ func SetupRoutes() *gin.Engine {
 	r.POST("/register", controllers.Register)
 	r.POST("/login", controllers.Login)
 
+	// Event routes
+	r.POST("/events", controllers.CreateEvent)
+	r.GET("/events", controllers.GetEvents)
+	r.GET("/events/:id", controllers.GetEvent)
+	r.PUT("/events/:id", controllers.UpdateEvent)
+	r.DELETE("/events/:id", controllers.DeleteEvent)
+
 	return r
 }
