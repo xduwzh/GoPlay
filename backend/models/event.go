@@ -2,8 +2,6 @@ package models
 
 import (
 	"time"
-
-	"gorm.io/gorm"
 )
 
 // Event represents an activity or event in the system
@@ -19,6 +17,4 @@ type Event struct {
 	UpdatedAt   time.Time // Timestamp when the event was last updated
 }
 
-func MigrateEvent(db *gorm.DB) {
-	db.AutoMigrate(&Event{})
-}
+

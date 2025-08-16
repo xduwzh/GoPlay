@@ -1,0 +1,1 @@
+// Event list page component
