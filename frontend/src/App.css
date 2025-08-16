@@ -9,6 +9,10 @@ body {
   background-color: #f0f2f5;
 }
 
+.custom-calendar .ant-picker-cell-inner {
+  visibility: hidden;
+}
+
 #root {
   width: 100%;
 }

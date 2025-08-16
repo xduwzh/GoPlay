@@ -6,15 +6,15 @@ import (
 
 // Event represents an activity or event in the system
 type Event struct {
-	ID          uint      `gorm:"primaryKey"`
-	Name        string    `gorm:"not null"` // Name of the event
-	Description string    `gorm:"type:text"` // Description of the event
-	Date        string `gorm:"not null"` // Date of the event
-	Time        string    `gorm:"not null"` // Time of the event (e.g., "14:00")
-	Location    string    `gorm:"not null"` // Location of the event
-	MaxPlayers  int       `gorm:"not null"` // Maximum number of players allowed
-	CreatedAt   time.Time // Timestamp when the event was created
-	UpdatedAt   time.Time // Timestamp when the event was last updated
+ID          uint      `gorm:"primaryKey" json:"id"`
+Name        string    `gorm:"not null" json:"name"` // Name of the event
+Description string    `gorm:"type:text" json:"description"` // Description of the event
+Date        string    `gorm:"not null" json:"date"` // Date of the event
+Time        string    `gorm:"not null" json:"time"` // Time of the event (e.g., "14:00")
+Location    string    `gorm:"not null" json:"location"` // Location of the event
+MaxPlayers  int       `gorm:"not null" json:"maxPlayers"` // Maximum number of players allowed
+CreatedAt   time.Time `json:"createdAt"` // Timestamp when the event was created
+UpdatedAt   time.Time `json:"updatedAt"` // Timestamp when the event was last updated
 }
 
 
