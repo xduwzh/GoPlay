@@ -1,4 +1,4 @@
-module LetsMatch/backend
+module GoPlay/backend
 
 go 1.23.0
 

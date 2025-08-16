@@ -1,8 +1,8 @@
 package main
 
 import (
-	"LetsMatch/backend/database"
-	"LetsMatch/backend/routes"
+	"GoPlay/backend/database"
+	"GoPlay/backend/routes"
 )
 
 func main() {

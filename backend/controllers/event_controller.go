@@ -3,8 +3,8 @@ package controllers
 import (
 	"net/http"
 
-	"LetsMatch/backend/database"
-	"LetsMatch/backend/models"
+	"GoPlay/backend/database"
+	"GoPlay/backend/models"
 
 	"github.com/gin-gonic/gin"
 )

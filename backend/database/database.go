@@ -2,7 +2,7 @@
 package database
 
 import (
-	"LetsMatch/backend/models"
+	"GoPlay/backend/models"
 	"fmt"
 	"log"
 	"os"

@@ -14,7 +14,7 @@ const Login: React.FC = () => {
       const response = await fetchLogin(values);
       if (response.status === 200) {
         dispatch(login(response.data));
-        console.log("Navigating to home...");
+        navigate("/");
         message.success("Login successful!");
       }
     } catch (error) {
