@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 const Header: React.FC = () => {
   const isLoggedIn = false; // Replace with actual authentication logic
 
-  const languageMenu = (
-    <Menu>
-      <Menu.Item key="1">English</Menu.Item>
-      <Menu.Item key="2">中文</Menu.Item>
-    </Menu>
-  );
+  const languageMenu = {
+    items: [
+      { key: "1", label: "English" },
+      { key: "2", label: "中文" },
+    ],
+  };
 
   return (
     <header
@@ -30,7 +30,7 @@ const Header: React.FC = () => {
       {/* Navigation Links */}
       <nav style={{ display: "flex", gap: "15px", alignItems: "center" }}>
         {/* Language Switcher */}
-        <Dropdown overlay={languageMenu} placement="bottomRight">
+        <Dropdown menu={languageMenu} placement="bottomRight">
           <Button>Language</Button>
         </Dropdown>
 

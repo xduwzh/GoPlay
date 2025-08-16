@@ -1,9 +1,25 @@
 import React from "react";
-import { Form, Input, Button, Card } from "antd";
+import { Form, Input, Button, Card, message } from "antd";
+import { useDispatch } from "react-redux";
+import { login } from "../store";
+import { fetchLogin } from "../apis/user";
+import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onFinish = async (values: any) => {
+    try {
+      const response = await fetchLogin(values);
+      if (response.status === 200) {
+        dispatch(login(response.data));
+        console.log("Navigating to home...");
+        message.success("Login successful!");
+      }
+    } catch (error) {
+      message.error("Login failed. Please check your credentials.");
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {

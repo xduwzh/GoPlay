@@ -6,7 +6,8 @@ import (
 )
 
 func main() {
-	database.InitDatabase()
-	r := routes.SetupRoutes()
-	r.Run() // Default listens on :8080
+    r := routes.SetupRoutes() // Use the returned engine from SetupRoutes
+
+    database.InitDatabase()
+    r.Run() // Default listens on :8080
 }
