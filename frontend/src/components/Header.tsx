@@ -6,7 +6,8 @@ import { logout } from "../store";
 
 // Header component
 const Header: React.FC = () => {
-  const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
+  const username = useSelector((state: any) => state.user.username);
+  const isLoggedIn = !!username;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -59,7 +60,16 @@ const Header: React.FC = () => {
         <Link to="/">Home</Link>
         {!isLoggedIn && <Link to="/login">Login</Link>}
         {!isLoggedIn && <Link to="/register">Register</Link>}
-        {isLoggedIn && <Link to="/profile">Profile</Link>}
+        {isLoggedIn && (
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <Link
+              to="/profile"
+              style={{ color: "primary", textDecoration: "none" }}
+            >
+              {username}
+            </Link>
+          </div>
+        )}
         {isLoggedIn && (
           <Button
             type="link"

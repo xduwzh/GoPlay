@@ -3,6 +3,7 @@ package routes
 
 import (
 	"GoPlay/backend/controllers"
+	"GoPlay/backend/middleware"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -23,6 +24,11 @@ func SetupRoutes() *gin.Engine {
 	// Auth routes
 	r.POST("/register", controllers.Register)
 	r.POST("/login", controllers.Login)
+
+	// Protected routes
+	protected := r.Group("/")
+	protected.Use(middleware.JWTMiddleware())
+	protected.GET("/profile", controllers.Profile)
 
 	// Event routes
 	r.POST("/events", controllers.CreateEvent)
