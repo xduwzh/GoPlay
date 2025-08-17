@@ -11,3 +11,11 @@ export const fetchRegister = (data: { username: string; password: string }) => {
 export const fetchProfile = () => {
   return request.get("/profile");
 };
+
+export const updateProfile = (data: {
+  username?: string;
+  password?: string;
+  avatar?: string;
+}) => {
+  return request.put("/profile", data);
+};

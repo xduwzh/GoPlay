@@ -29,6 +29,9 @@ func SetupRoutes() *gin.Engine {
 	protected := r.Group("/")
 	protected.Use(middleware.JWTMiddleware())
 	protected.GET("/profile", controllers.Profile)
+	protected.PUT("/profile", controllers.UpdateProfile)
+	protected.PUT("/events/:id/register", controllers.RegisterForEvent)
+	protected.DELETE("/events/:id/register", controllers.CancelRegistration)
 
 	// Event routes
 	r.POST("/events", controllers.CreateEvent)

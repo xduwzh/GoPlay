@@ -30,9 +30,8 @@ request.interceptors.response.use(
     if (status === 401) {
       // token invalid or expired
       removeToken();
-      window.location.href = "/login"; // redirect to login page
-
-      window.location.reload();
+      // Use replace to avoid going back to the protected page
+      window.location.replace("/login");
     }
     return Promise.reject(error);
   }

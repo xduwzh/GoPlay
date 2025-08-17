@@ -86,3 +86,54 @@ func Profile(c *gin.Context) {
 		"avatar":   user.Avatar,
 	})
 }
+
+// UpdateProfile updates the authenticated user's profile fields
+func UpdateProfile(c *gin.Context) {
+	var input struct {
+		Username string `json:"username"`
+		Password string `json:"password"`
+		Avatar   string `json:"avatar"`
+	}
+
+	if err := c.ShouldBindJSON(&input); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	uid, ok := c.Get("userID")
+	if !ok {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+
+	var user models.User
+	if err := database.DB.First(&user, uid).Error; err != nil {
+		if err == gorm.ErrRecordNotFound {
+			c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+			return
+		}
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch user"})
+		return
+	}
+
+	if input.Username != "" {
+		user.Username = input.Username
+	}
+	if input.Password != "" {
+		user.Password = input.Password
+	}
+	if input.Avatar != "" {
+		user.Avatar = input.Avatar
+	}
+
+	if err := database.DB.Save(&user).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update profile"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"id":       user.ID,
+		"username": user.Username,
+		"avatar":   user.Avatar,
+	})
+}
