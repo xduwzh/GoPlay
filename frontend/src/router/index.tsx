@@ -25,7 +25,7 @@ const AppRouter: React.FC = () => {
           </Routes>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          GoPlay ©2025 Created by xduwzh
+          GoPlay ©2025 Created by ZhenghangWu
         </Footer>
       </Layout>
     </Router>

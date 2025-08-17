@@ -35,7 +35,7 @@ const EventList: React.FC<{ events: EventItem[] }> = ({ events }) => {
       style={{
         minWidth: 350,
         width: "100%",
-        height: 420,
+        height: 320,
         display: "flex",
         flexDirection: "column",
       }}
@@ -45,7 +45,7 @@ const EventList: React.FC<{ events: EventItem[] }> = ({ events }) => {
         style={{
           flex: 1,
           minHeight: 0,
-          padding: 24,
+          padding: 0,
           display: "flex",
           flexDirection: "column",
         }}

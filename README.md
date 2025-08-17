@@ -23,6 +23,16 @@ A full‑stack starter for event management with JWT authentication, user profil
   - CORS for localhost dev
   - Simple env configuration; Postgres in Docker
 
+## Screenshots
+
+Home Page
+
+![Home](./screenshots/Home.png)
+
+Event Info Page
+
+![Event Info](./screenshots/EventInfo.png)
+
 ## Project structure
 
 - `backend/` Go Gin API server
