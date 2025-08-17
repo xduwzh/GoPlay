@@ -3,6 +3,7 @@ import { Dropdown, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
+import logo from "../assets/logo.svg"; // Assuming you have a logo.svg in assets
 
 // Header component
 const Header: React.FC = () => {
@@ -46,7 +47,11 @@ const Header: React.FC = () => {
         style={{ fontSize: "24px", fontWeight: "bold", cursor: "pointer" }}
         onClick={() => navigate("/")}
       >
-        GoPlay
+        <img
+          src={logo}
+          alt="GoPlay Logo"
+          style={{ width: "200px", height: "50px" }}
+        />
       </div>
 
       {/* Navigation Links */}
