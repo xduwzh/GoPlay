@@ -16,6 +16,7 @@ const Login: React.FC = () => {
         dispatch(login(response.data));
         navigate("/");
         message.success("Login successful!");
+        console.log("user", response.data.user.avatar);
       }
     } catch (error) {
       message.error("Login failed. Please check your credentials.");

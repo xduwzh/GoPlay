@@ -30,6 +30,8 @@ func SetupRoutes() *gin.Engine {
 	protected.Use(middleware.JWTMiddleware())
 	protected.GET("/profile", controllers.Profile)
 	protected.PUT("/profile", controllers.UpdateProfile)
+	// File upload presign (avatar)
+	protected.POST("/uploads/avatar/presign", controllers.AvatarPresign)
 	protected.PUT("/events/:id/register", controllers.RegisterForEvent)
 	protected.DELETE("/events/:id/register", controllers.CancelRegistration)
 

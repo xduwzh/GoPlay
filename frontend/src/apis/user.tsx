@@ -19,3 +19,10 @@ export const updateProfile = (data: {
 }) => {
   return request.put("/profile", data);
 };
+
+export const presignAvatarUpload = (data: {
+  filename: string;
+  contentType: string;
+}) => {
+  return request.post("/uploads/avatar/presign", data);
+};

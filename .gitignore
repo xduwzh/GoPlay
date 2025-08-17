@@ -1,0 +1,20 @@
+# Global ignores for the repo
+# macOS
+.DS_Store
+
+# Node/Frontend build caches
+frontend/node_modules/
+frontend/dist/
+
+# Backend build caches (go)
+backend/bin/
+backend/build/
+
+# Env files
+.env
+*.env
+backend/.env
+frontend/.env
+
+# Local tool configs
+.vscode/
