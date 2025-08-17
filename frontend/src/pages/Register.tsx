@@ -61,6 +61,12 @@ const Register: React.FC = () => {
             </Button>
           </Form.Item>
         </Form>
+        <div style={{ marginTop: 12 }}>
+          <span style={{ color: "#666" }}>Have Account？</span>
+          <Button type="link" onClick={() => navigate("/login")}>
+            Login
+          </Button>
+        </div>
       </Card>
     </div>
   );
