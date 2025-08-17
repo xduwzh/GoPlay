@@ -1,0 +1,21 @@
+.center-container {
+  text-align: center;
+}
+.center-left-block {
+  display: inline-block;
+  text-align: left;
+}
+/* Make the details grid collapse to a single column on small screens */
+@media (max-width: 640px) {
+  .details-grid {
+    grid-template-columns: 1fr !important;
+    column-gap: 0 !important;
+  }
+}
+/* Stack the two bottom cards vertically on small screens (handled by xs=24 md=12 in JSX),
+   here we just ensure inner content stays visually centered-left */
+@media (max-width: 640px) {
+  .center-left-block {
+    width: 100%;
+  }
+}

@@ -1,9 +1,8 @@
 import React from "react";
 import { Dropdown, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
-import { useNavigate } from "react-router-dom";
 
 // Header component
 const Header: React.FC = () => {
@@ -42,7 +41,12 @@ const Header: React.FC = () => {
       }}
     >
       {/* Website Title */}
-      <div style={{ fontSize: "24px", fontWeight: "bold" }}>GoPlay</div>
+      <div
+        style={{ fontSize: "24px", fontWeight: "bold", cursor: "pointer" }}
+        onClick={() => navigate("/")}
+      >
+        GoPlay
+      </div>
 
       {/* Navigation Links */}
       <nav style={{ display: "flex", gap: "15px", alignItems: "center" }}>
